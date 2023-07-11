@@ -27,27 +27,27 @@ const listItems = products.map(product=>
   );
 
 
-  function MyButton(){
-    const[count,setCount]=useState(0);
-
-    function handleClick(){
-      setCount(count+1);
-    }
+  function MyButton({ count, onClick }){
+  
     return (
-      <button onClick={handleClick}>Clicked {count} times</button>
+      <button onClick={onClick}>Clicked {count} times</button>
     );
   }
 
 function App() {
+  const[count,setCount]=useState(0);
 
+    function handleClick(){
+      setCount(count+1);
+    }
   return (
     <div className='main-container'>
     <h1>{user.name}</h1>
     <img className='avatar' src={user.imageUrl} alt={'photo of '+user.name} style={{width:user.imageSize,height:user.imageSize}}></img>
     <ul>{listItems}</ul>
     <h1>counter that updates</h1>
-    <MyButton/>
-    <MyButton></MyButton>
+    <MyButton count={count} onClick={handleClick}/>
+    <MyButton count={count} onClick={handleClick}/>
 
     </div>
     
