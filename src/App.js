@@ -1,6 +1,6 @@
 
 import './App.css';
-
+import { useState } from 'react';
 
 const user = {
   name: "Ashutosh",
@@ -26,6 +26,18 @@ const listItems = products.map(product=>
   </li>
   );
 
+
+  function MyButton(){
+    const[count,setCount]=useState(0);
+
+    function handleClick(){
+      setCount(count+1);
+    }
+    return (
+      <button onClick={handleClick}>Clicked {count} times</button>
+    );
+  }
+
 function App() {
 
   return (
@@ -33,7 +45,12 @@ function App() {
     <h1>{user.name}</h1>
     <img className='avatar' src={user.imageUrl} alt={'photo of '+user.name} style={{width:user.imageSize,height:user.imageSize}}></img>
     <ul>{listItems}</ul>
+    <h1>counter that updates</h1>
+    <MyButton/>
+    <MyButton></MyButton>
+
     </div>
+    
   );
 }
 
